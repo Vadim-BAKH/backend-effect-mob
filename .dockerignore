@@ -1,0 +1,42 @@
+# Git
+.git
+.gitignore
+
+# Docker
+.dockerignore
+Dockerfile
+docker-compose.yml
+
+# Bytecode
+__pycache__/
+*.py[cod]
+
+# Virtualenv
+.god/
+.venv/
+venv/
+env/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDEs
+.idea/
+.vscode/
+
+# Tests / Coverage
+.pytest_cache/
+.tox/
+.coverage
+htmlcov/
+nosetests.xml
+coverage.xml
+
+# Build / dist
+build/
+dist/
+*.egg-info/
+
+# Logs
+*.log
