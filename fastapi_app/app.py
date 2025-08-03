@@ -8,6 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import ORJSONResponse
 
 from fastapi_app.configs import async_engine, settings
+from fastapi_app.exceptions import register_exception_handler
 
 
 @asynccontextmanager
@@ -26,7 +27,7 @@ app_ = FastAPI(
     default_response_class=ORJSONResponse,
 )
 
-# register_exception_handler(app_)
+register_exception_handler(app_)
 
 
 app_.add_middleware(

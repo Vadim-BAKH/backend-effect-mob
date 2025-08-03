@@ -30,15 +30,16 @@ class User(UUIDMixin, ActiveMixin, Base):
     )
     first_name: Mapped[str] = mapped_column(
         String(255),
-        nullable=True,
+        nullable=False,
     )
     last_name: Mapped[str] = mapped_column(
         String(255),
-        nullable=True,
+        nullable=False,
     )
     middle_name: Mapped[str] = mapped_column(
         String(255),
         nullable=True,
+        default="",
     )
 
     roles: Mapped[list["UserRole"]] = relationship(
