@@ -1,7 +1,8 @@
 """Схема токена."""
 
+from uuid import UUID
+
 from pydantic import BaseModel, ConfigDict, EmailStr, SecretStr
-from sqlalchemy.dialects.postgresql import UUID as PG_UUID
 
 from fastapi_app.schemas.user import UserOut
 
@@ -18,7 +19,7 @@ class TokenInfo(BaseModel):
 class TokenPayload(BaseModel):
     """Представление токена."""
 
-    sub: PG_UUID
+    sub: UUID
     exp: int
     type: str  # "access" or "refresh"
 

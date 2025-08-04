@@ -1,6 +1,7 @@
 """Сериализатор пользователя."""
 
 from typing import Annotated, Optional
+from uuid import UUID
 
 from pydantic import (
     BaseModel,
@@ -10,7 +11,6 @@ from pydantic import (
     SecretStr,
     model_validator,
 )
-from sqlalchemy.dialects.postgresql import UUID as PG_UUID
 
 from fastapi_app.exceptions import PasswordsDoNotMatch
 
@@ -88,5 +88,5 @@ class UserOut(UserBase):
     """Ответ при получении пользователя."""
 
     model_config = ConfigDict(from_attributes=True)
-    id: PG_UUID
+    id: UUID
     is_active: bool
