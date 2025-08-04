@@ -10,6 +10,7 @@ __all__ = [
     "UserUnauthorized",
     "InvalidToken",
     "UserInActive",
+    "UserNotFound",
 ]
 
 from fastapi_app.exceptions.detail_exc.bad_request import (
@@ -17,7 +18,10 @@ from fastapi_app.exceptions.detail_exc.bad_request import (
     PasswordsDoNotMatch,
 )
 from fastapi_app.exceptions.detail_exc.forbidden import UserInActive
-from fastapi_app.exceptions.detail_exc.not_found import NoUserByThisId
+from fastapi_app.exceptions.detail_exc.not_found import (
+    NoUserByThisId,
+    UserNotFound,
+)
 from fastapi_app.exceptions.detail_exc.unauthorized import (
     InvalidToken,
     NotAccessTokenType,

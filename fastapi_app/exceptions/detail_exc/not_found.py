@@ -11,3 +11,13 @@ class NoUserByThisId(HTTPException):
             status_code=status.HTTP_404_NOT_FOUND,
             detail="No user by user-ID.",
         )
+
+
+class UserNotFound(HTTPException):
+    """Модель исключения 'UserNotFound'."""
+
+    def __init__(self):
+        super().__init__(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="No user by user-email.",
+        )
