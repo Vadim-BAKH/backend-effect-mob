@@ -150,6 +150,16 @@
 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/c4ee4ad6-70d5-4d35-8d25-c656c4b9dd03" />
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/bd97ee49-983b-42bf-aa81-d68a120bba3c" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/5bc31b5e-26d3-4fc1-9f77-5926b3089fbb" />
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/0b767e9d-9bf2-4214-b1e7-d31d43939cf6" />
 
 Теперь, авторизуем этого пользователя , удалим последний заказ и проверим спписок заказов.
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/7eb79547-a523-4a35-8ca6-0527758c82d5" />
+
+И он же читает список без удаленного заказа.
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/e818645a-b786-4839-994d-a946288e17df" />
+
+
+## В целом, задание выполнено в рамках условий, систему авторизации можно использовать в любом приложении.
