@@ -9,6 +9,14 @@ __all__ = [
     "LoginResponse",
     "TokenPayload",
     "TokenInfo",
+    "OrderCreate",
+    "OrderOut",
+    "PermissionOut",
+    "PermissionCreate",
+    "RoleCreate",
+    "RoleOut",
+    "ResourceOut",
+    "ResourceCreate",
 ]
 
 from fastapi_app.schemas.auth import (
@@ -16,6 +24,22 @@ from fastapi_app.schemas.auth import (
     LoginResponse,
     TokenInfo,
     TokenPayload,
+)
+from fastapi_app.schemas.order import (
+    OrderCreate,
+    OrderOut,
+)
+from fastapi_app.schemas.permission import (
+    PermissionCreate,
+    PermissionOut,
+)
+from fastapi_app.schemas.resource import (
+    ResourceCreate,
+    ResourceOut,
+)
+from fastapi_app.schemas.role import (
+    RoleCreate,
+    RoleOut,
 )
 from fastapi_app.schemas.user import (
     UserBase,
