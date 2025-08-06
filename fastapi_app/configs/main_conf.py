@@ -13,6 +13,15 @@ CERTS_DIR = Path("/app/certs")
 LOG_DEFAULT_FORMAT = "[%(asctime)s.%(msecs)03d] %(module)10s:%(lineno)-3d %(levelname)-7s - %(message)s"
 
 
+class SuperUserConfig(BaseModel):
+    """Конфигуратор администратора."""
+
+    email: str
+    password: str
+    first_name: str
+    last_name: str
+
+
 class LoggingConfig(BaseModel):
     """Конфигуратор логирования."""
 
@@ -65,6 +74,7 @@ class Settings(BaseSettings):
     origins: Annotated[list[str], Field(default_factory=list)]
     db: DatabaseConfig
     auth_jwt: AuthJWT = AuthJWT()
+    superuser: SuperUserConfig
 
     model_config = SettingsConfigDict(
         env_file=("env.template", "env"),

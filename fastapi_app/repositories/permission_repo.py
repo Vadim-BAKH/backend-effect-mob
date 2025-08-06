@@ -75,3 +75,17 @@ class PermissionRepo:
         )
         result = await self.session.execute(stmt)
         return result.unique().scalars().all()
+
+    async def get_by_action_and_resource(
+        self,
+        action: str,
+        resource_name: str,
+    ) -> Permission | None:
+        """Получить право по действию и ресурсу."""
+        stmt = (
+            select(Permission)
+            .options(joinedload(Permission.resource))
+            .where(Permission.action == action, Resource.name == resource_name)
+        )
+        result = await self.session.execute(stmt)
+        return result.unique().scalar_one_or_none()

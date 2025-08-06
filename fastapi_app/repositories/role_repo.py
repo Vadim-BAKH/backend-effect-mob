@@ -37,3 +37,9 @@ class RoleRepo:
         if role:
             await self.session.delete(role)
             await self.session.commit()
+
+    async def get_by_name(self, name: str) -> Role | None:
+        """Получить роль по имени."""
+        stmt = select(Role).where(Role.name == name)
+        result = await self.session.execute(stmt)
+        return result.scalar_one_or_none()

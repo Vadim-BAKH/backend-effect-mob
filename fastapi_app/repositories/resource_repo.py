@@ -34,3 +34,9 @@ class ResourceRepo:
             delete(Resource).where(Resource.id == resource_id),
         )
         await self.session.commit()
+
+    async def get_by_name(self, name: str) -> Resource | None:
+        """Получить ресурс по имени."""
+        stmt = select(Resource).where(Resource.name == name)
+        result = await self.session.execute(stmt)
+        return result.scalar_one_or_none()

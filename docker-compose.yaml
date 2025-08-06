@@ -26,6 +26,7 @@ services:
     command: >
       /bin/bash -c "
       alembic upgrade head &&
+      python -m fastapi_app.init_superuser &&
       uvicorn fastapi_app.app:app_ --host 0.0.0.0 --port 8000
       "
     restart: always

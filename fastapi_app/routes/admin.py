@@ -2,9 +2,9 @@
 
 from uuid import UUID
 
-from fastapi import APIRouter, status
+from fastapi import APIRouter, Depends, status
 
-from fastapi_app.dependencies import DBSessionDep
+from fastapi_app.dependencies import DBSessionDep, check_permission
 from fastapi_app.models import RolePermission, UserRole
 from fastapi_app.repositories import (
     PermissionRepo,
@@ -26,7 +26,9 @@ router = APIRouter(prefix="/admin", tags=["Admin"])
 @router.post(
     "/roles",
     response_model=RoleOut,
-    # dependencies=[Depends(check_permission("superuser", "main"))],
+    dependencies=[
+        Depends(check_permission("superuser", "main")),
+    ],
     status_code=status.HTTP_201_CREATED,
 )
 async def create_role(data: RoleCreate, session: DBSessionDep):
@@ -37,6 +39,9 @@ async def create_role(data: RoleCreate, session: DBSessionDep):
 @router.get(
     "/roles",
     response_model=list[RoleOut],
+    dependencies=[
+        Depends(check_permission("superuser", "main")),
+    ],
     status_code=status.HTTP_200_OK,
 )
 async def get_roles(session: DBSessionDep):
@@ -46,6 +51,9 @@ async def get_roles(session: DBSessionDep):
 
 @router.delete(
     "/roles/{role_id}",
+    dependencies=[
+        Depends(check_permission("superuser", "main")),
+    ],
     status_code=status.HTTP_204_NO_CONTENT,
 )
 async def delete_role(role_id: UUID, session: DBSessionDep):
@@ -57,6 +65,9 @@ async def delete_role(role_id: UUID, session: DBSessionDep):
 @router.post(
     "/resources",
     response_model=ResourceOut,
+    dependencies=[
+        Depends(check_permission("superuser", "main")),
+    ],
     status_code=status.HTTP_201_CREATED,
 )
 async def create_resource(
@@ -67,7 +78,14 @@ async def create_resource(
     return await ResourceRepo(session=session).create(data=data)
 
 
-@router.get("/resources", response_model=list[ResourceOut])
+@router.get(
+    "/resources",
+    response_model=list[ResourceOut],
+    dependencies=[
+        Depends(check_permission("superuser", "main")),
+    ],
+    status_code=status.HTTP_200_OK,
+)
 async def get_resources(session: DBSessionDep):
     """Получение списка ресурсов."""
     return await ResourceRepo(session=session).get_all()
@@ -75,6 +93,9 @@ async def get_resources(session: DBSessionDep):
 
 @router.delete(
     "/resources/{resource_id}",
+    dependencies=[
+        Depends(check_permission("superuser", "main")),
+    ],
     status_code=status.HTTP_204_NO_CONTENT,
 )
 async def delete_resource(
@@ -89,6 +110,9 @@ async def delete_resource(
 @router.post(
     "/permissions",
     response_model=PermissionOut,
+    dependencies=[
+        Depends(check_permission("superuser", "main")),
+    ],
     status_code=status.HTTP_201_CREATED,
 )
 async def create_permission(
@@ -99,7 +123,14 @@ async def create_permission(
     return await PermissionRepo(session=session).create(data=data)
 
 
-@router.get("/permissions", response_model=list[PermissionOut])
+@router.get(
+    "/permissions",
+    response_model=list[PermissionOut],
+    dependencies=[
+        Depends(check_permission("superuser", "main")),
+    ],
+    status_code=status.HTTP_200_OK,
+)
 async def get_permissions(session: DBSessionDep):
     """Получение списка разрешений."""
     return await PermissionRepo(session=session).get_all()
@@ -107,6 +138,9 @@ async def get_permissions(session: DBSessionDep):
 
 @router.delete(
     "/permissions/{permission_id}",
+    dependencies=[
+        Depends(check_permission("superuser", "main")),
+    ],
     status_code=status.HTTP_204_NO_CONTENT,
 )
 async def delete_permission(permission_id: UUID, session: DBSessionDep):
@@ -116,6 +150,9 @@ async def delete_permission(permission_id: UUID, session: DBSessionDep):
 
 @router.post(
     "/assign",
+    dependencies=[
+        Depends(check_permission("superuser", "main")),
+    ],
     status_code=status.HTTP_204_NO_CONTENT,
 )
 async def assign_permission_to_role(
@@ -132,6 +169,9 @@ async def assign_permission_to_role(
 
 @router.post(
     "/assign-role",
+    dependencies=[
+        Depends(check_permission("superuser", "main")),
+    ],
     status_code=status.HTTP_201_CREATED,
 )
 async def assign_role_to_user(
