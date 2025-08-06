@@ -153,7 +153,7 @@ async def delete_permission(permission_id: UUID, session: DBSessionDep):
     dependencies=[
         Depends(check_permission("superuser", "main")),
     ],
-    status_code=status.HTTP_204_NO_CONTENT,
+    status_code=status.HTTP_201_CREATED,
 )
 async def assign_permission_to_role(
     role_id: UUID,
